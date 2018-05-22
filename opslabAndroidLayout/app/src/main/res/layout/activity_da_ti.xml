@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.androidlayout.androidlayout.DaTiActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="90"
+            android:minHeight="400dp"
+            android:gravity="center_horizontal"
+            android:paddingTop="60dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/tx"/>
+
+            <TextView
+                android:id="@+id/DaTi_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/index_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ture" />
+
+            <Button
+                android:id="@+id/index_button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flase" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
