@@ -9,31 +9,60 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/index_button"
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="calc" />
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/index_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="calc" />
 
-        <Button
-        android:id="@+id/index_button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="dati" />
+            <Button
+                android:id="@+id/index_button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dati" />
 
-        <Button
-            android:id="@+id/index_editBtn"
+            <Button
+                android:id="@+id/index_editBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="editBtn" />
+
+            <Button
+                android:id="@+id/index_sendBroadcastBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sendBroadcast" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="editBtn" />
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/index_localsendBroadcastBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="localBroadcast" />
 
-        <Button
-            android:id="@+id/index_sendBroadcastBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="sendBroadcast" />
+            <Button
+                android:id="@+id/index_sharedpreferences"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sharedpreferences" />
+        </LinearLayout>
     </LinearLayout>
+
+
+
+
 
 
 </android.support.constraint.ConstraintLayout>

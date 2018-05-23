@@ -3,9 +3,9 @@
     package="com.example.androidlayout.androidlayout">
 
     <!-- To access Google+ APIs: -->
-    <!--权限声明-->
+    <!-- 权限声明 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -18,15 +18,15 @@
         <activity android:name=".IndexActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".LinearLayoutCalcActivity" />
         <activity android:name=".DaTiActivity" />
         <activity android:name=".EditViewActivity" />
 
-        <!--静态注册实现开机自启动-->
+        <!-- 静态注册实现开机自启动 -->
         <!--
         <receiver android:name=".NetworkChangeReceiver"
             android:enabled="true"
@@ -37,15 +37,15 @@
         </receiver>
         -->
         <receiver
-            android:name="com.example.androidlayout.androidlayout.MyBroadcastReceiver"
+            android:name=".MyBroadcastReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.example.androidlayout.androidlayout.MY_BROADCAST"/>
+                <action android:name="com.example.androidlayout.androidlayout.MY_BROADCAST" />
             </intent-filter>
         </receiver>
 
-
+        <activity android:name=".SharedPreferencesActivity"></activity>
     </application>
 
 </manifest>

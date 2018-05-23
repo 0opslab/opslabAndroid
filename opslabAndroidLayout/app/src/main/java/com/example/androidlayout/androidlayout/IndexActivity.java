@@ -2,6 +2,7 @@ package com.example.androidlayout.androidlayout;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,9 @@ public class IndexActivity extends AppCompatActivity {
 
     private NetworkChangeReceiver networkChangeReceiver;
 
+    private LocalBroadcastManager localBroadcastManager;
+
+    private LocalBroadcastReceiver localBroadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +73,45 @@ public class IndexActivity extends AppCompatActivity {
             }
         });
 
+        //使用本地的广播系统
+        //本地广播协议只能使用动态注册不能使用静态注册
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.example.androidlayout.androidlayout.LOCAL_BROADCAST");
+        localBroadcastReceiver = new LocalBroadcastReceiver();
+        localBroadcastManager.registerReceiver(localBroadcastReceiver,intentFilter);
+
+
+        Button localBroadcastBtn = findViewById(R.id.index_localsendBroadcastBtn);
+        localBroadcastBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("IndexActivity", "onClick: LOCAL_BROADCAST");
+                Intent intent = new Intent("com.example.androidlayout.androidlayout.LOCAL_BROADCAST");
+                localBroadcastManager.sendBroadcast(intent);
+            }
+        });
+
+
+
+        //演示使用SharedPrefereneces存储和读取数据
+        Button sharedPreftBtn = findViewById(R.id.index_sharedpreferences);
+        sharedPreftBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, SharedPreferencesActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         //unregisterReceiver(networkChangeReceiver);
+
+        if(localBroadcastManager != null){
+            localBroadcastManager.unregisterReceiver(localBroadcastReceiver);
+        }
     }
 }
