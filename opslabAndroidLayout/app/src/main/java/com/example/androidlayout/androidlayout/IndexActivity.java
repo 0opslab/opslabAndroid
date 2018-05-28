@@ -1,13 +1,20 @@
 package com.example.androidlayout.androidlayout;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class IndexActivity extends AppCompatActivity {
     private IntentFilter intentFilter;
@@ -62,7 +69,6 @@ public class IndexActivity extends AppCompatActivity {
 //        registerReceiver(networkChangeReceiver,intentFilter);
 
 
-
         Button sendBroadcastBtn = findViewById(R.id.index_sendBroadcastBtn);
         sendBroadcastBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +85,7 @@ public class IndexActivity extends AppCompatActivity {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("com.example.androidlayout.androidlayout.LOCAL_BROADCAST");
         localBroadcastReceiver = new LocalBroadcastReceiver();
-        localBroadcastManager.registerReceiver(localBroadcastReceiver,intentFilter);
+        localBroadcastManager.registerReceiver(localBroadcastReceiver, intentFilter);
 
 
         Button localBroadcastBtn = findViewById(R.id.index_localsendBroadcastBtn);
@@ -93,7 +99,6 @@ public class IndexActivity extends AppCompatActivity {
         });
 
 
-
         //演示使用SharedPrefereneces存储和读取数据
         Button sharedPreftBtn = findViewById(R.id.index_sharedpreferences);
         sharedPreftBtn.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +108,135 @@ public class IndexActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        //演示动态申请权限
+        Button callPhoneBtn = findViewById(R.id.index_callPhone);
+        callPhoneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //传统的方式
+//                try{
+//                    Intent intent = new Intent(Intent.ACTION_CALL);
+//                    intent.setData(Uri.parse("tel:10086"));
+//                    startActivity(intent);
+//                }catch (SecurityException e){
+//                    e.printStackTrace();
+//                }
+                //动态申请权限
+                if (ContextCompat.checkSelfPermission(IndexActivity.this, Manifest.permission.CALL_PHONE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(IndexActivity.this,
+                            new String[]{Manifest.permission.CALL_PHONE}, 1);
+                } else {
+                    callPhone("tel:10086");
+                }
+            }
+        });
+
+
+
+        //读取通讯录
+        //演示使用SharedPrefereneces存储和读取数据
+        Button readContactsBtn = findViewById(R.id.index_ReadContactsBtn);
+        readContactsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, ReadContactsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button photocaptureBtn = findViewById(R.id.index_photocapture);
+        photocaptureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, PhotographActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button photoselectBtn = findViewById(R.id.index_photoselect);
+        photoselectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, ImageSelectedActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button webviewBtn = findViewById(R.id.index_webview);
+        webviewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, WebViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        Button httBtn = findViewById(R.id.index_httpbtn);
+        httBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, HTTPActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button okhttpBtn = findViewById(R.id.index_okhttpbtn);
+        okhttpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, OKHttpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button messageHandlerBtn = findViewById(R.id.index_messageHandler);
+        messageHandlerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, MessageHandlerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button asyncTaskBtn = findViewById(R.id.index_AsyncTask);
+        asyncTaskBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, AsyncTaskImageActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button serviceBtn = findViewById(R.id.index_service);
+        serviceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, ServiceActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    callPhone("tel:10086");
+                } else {
+                    Toast.makeText(this, "YOU DENIED THE PERMISSION", Toast.LENGTH_LONG).show();
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -110,8 +244,23 @@ public class IndexActivity extends AppCompatActivity {
         super.onDestroy();
         //unregisterReceiver(networkChangeReceiver);
 
-        if(localBroadcastManager != null){
+        if (localBroadcastManager != null) {
             localBroadcastManager.unregisterReceiver(localBroadcastReceiver);
         }
     }
+
+    //拨号
+    private void callPhone(String mobile) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse(mobile));
+            startActivity(intent);
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.androidlayout.androidlayout.SharedPreferencesActivity">
+    tools:context="com.example.androidlayout.androidlayout.ImageSelectedActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,8 +16,8 @@
             android:layout_height="0dp"
             android:layout_weight="90">
 
-            <EditText
-                android:id="@+id/sharedpreferences_text"
+            <ImageView
+                android:id="@+id/iamgeselected_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
@@ -30,15 +30,10 @@
             android:paddingBottom="10dp"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/sharedpreferences_save"
+                android:id="@+id/iamgeselected_start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="save" />
-            <Button
-                android:id="@+id/sharedpreferences_read"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="get" />
+                android:text="IMAGECAPTURE" />
         </LinearLayout>
     </LinearLayout>
 

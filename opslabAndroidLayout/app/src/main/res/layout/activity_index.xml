@@ -57,6 +57,88 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="sharedpreferences" />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/index_callPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sharedpreferences" />
+
+            <Button
+                android:id="@+id/index_ReadContactsBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ReadContacts" />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/index_photocapture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="photocapture" />
+
+            <Button
+                android:id="@+id/index_photoselect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="photoselect" />
+            <Button
+                android:id="@+id/index_webview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="webview" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/index_httpbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="httpbtn" />
+            <Button
+                android:id="@+id/index_okhttpbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OKHTTP" />
+            <Button
+                android:id="@+id/index_messageHandler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MESSAGE" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/index_AsyncTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AsyncTask" />
+
+
+            <Button
+                android:id="@+id/index_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="service" />
+
         </LinearLayout>
     </LinearLayout>
 
