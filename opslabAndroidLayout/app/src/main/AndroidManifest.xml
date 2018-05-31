@@ -75,7 +75,11 @@
         <service
             android:name=".MyService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".IncludeLayoutActivity" />
+        <activity android:name=".ListViewActivity" />
+        <activity android:name=".WebView2Activity"></activity>
     </application>
 
 </manifest>

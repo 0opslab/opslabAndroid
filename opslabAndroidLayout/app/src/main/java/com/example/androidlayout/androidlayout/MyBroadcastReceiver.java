@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 /**
  * 自定义的广播接收器
- * Created by wuyanbing on 2018/5/21 0021.
+ * Created by piu on 2018/5/21 0021.
  */
 
 public class MyBroadcastReceiver extends BroadcastReceiver {

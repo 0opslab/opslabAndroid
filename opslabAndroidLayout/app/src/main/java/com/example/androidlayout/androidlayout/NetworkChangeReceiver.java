@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 /**
  * 实现网络变化广播监听器
- * Created by wuyanbing on 2018/5/21 0021.
+ * Created by piu on 2018/5/21 0021.
  */
 
 public class NetworkChangeReceiver extends BroadcastReceiver {

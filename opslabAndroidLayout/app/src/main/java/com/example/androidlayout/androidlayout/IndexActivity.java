@@ -220,6 +220,38 @@ public class IndexActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+
+        Button includeLayoutBtn = findViewById(R.id.index_includeLayout);
+        includeLayoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, IncludeLayoutActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button listViewBtn = findViewById(R.id.index_listView);
+        listViewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, ListViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button webView2Btn = findViewById(R.id.index_webview2);
+        webView2Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, WebView2Activity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
 

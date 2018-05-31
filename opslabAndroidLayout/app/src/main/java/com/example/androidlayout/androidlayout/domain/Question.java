@@ -1,7 +1,7 @@
 package com.example.androidlayout.androidlayout.domain;
 
 /**
- * Created by wuyanbing on 2018/5/17 0017.
+ * Created by piu on 2018/5/17 0017.
  */
 
 public class Question {

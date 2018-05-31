@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 /**
- * Created by wuyanbing on 2018/5/23 0023.
+ * Created by piu on 2018/5/23 0023.
  */
 
 public class LocalBroadcastReceiver extends BroadcastReceiver {
