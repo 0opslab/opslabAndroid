@@ -28,7 +28,10 @@ public class WebView2Activity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_web_view2);
 
         BACKBTN = findViewById(R.id.webview2_back);
+        BACKBTN.setOnClickListener(this);
         EDITBTN = findViewById(R.id.webview2_edit);
+        EDITBTN.setOnClickListener(this);
+
         TITLE = findViewById(R.id.webview2_title);
         WEBVIEW = findViewById(R.id.webview2_webview);
 
