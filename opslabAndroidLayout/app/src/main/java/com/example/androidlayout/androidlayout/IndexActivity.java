@@ -1,6 +1,10 @@
 package com.example.androidlayout.androidlayout;
 
 import android.Manifest;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -10,11 +14,18 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager;
+import java.util.Timer;
 
 public class IndexActivity extends AppCompatActivity {
     private IntentFilter intentFilter;
@@ -252,6 +263,166 @@ public class IndexActivity extends AppCompatActivity {
         });
 
 
+        Button modalDialogBtn = findViewById(R.id.index_modalDialog);
+        modalDialogBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder ad=new AlertDialog.Builder(IndexActivity.this);
+    		/*
+    		setTitle()：给对话框设置title.
+    		setIcon():给对话框设置图标。
+    		setMessage():设置对话框的提示信息
+    		setItems()：设置对话框要显示的一个list,一般用于要显示几个命令时
+    		setSingleChoiceItems():设置对话框显示一个单选的List
+    		setMultiChoiceItems():用来设置对话框显示一系列的复选框。
+    		setPositiveButton():给对话框添加”Yes”按钮。
+    		setNegativeButton():给对话框添加”No”按钮。
+    		show():显示对话框，一般放最后
+    		*/
+                ad.setIcon(R.drawable.music_ico);
+                ad.setTitle("选项");//设置对话框标题
+                ad.setMessage("操作");//设置对话框内容
+                ad.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+
+                    }
+                });
+                ad.setNegativeButton("官方网站",new DialogInterface.OnClickListener() {
+                    //显示官方网站按钮，点击打开浏览器，转向www.pocketdigi.com
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        Uri uri=Uri.parse("https://blog.0opslab.com");
+                        Intent intent=new Intent(Intent.ACTION_VIEW,uri);
+                        startActivity(intent);
+                    }
+                });
+
+                //ad.setItems(new String[]{"播放","从列表中移除"},new itemListonClick());
+                ad.show();//显示对话框
+            }
+        });
+
+
+        Button customDialogBtn = findViewById(R.id.index_customDialog);
+        customDialogBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int m_count = 0;
+                //声明进度条对话框
+                final ProgressDialog m_pDialog;
+                //创建ProgressDialog对象
+                m_pDialog = new ProgressDialog(IndexActivity.this);
+
+                // 设置进度条风格，风格为圆形，旋转的
+                m_pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+                m_pDialog.getWindow().setGravity(Gravity.CENTER);
+
+                // 设置ProgressDialog 标题
+                //m_pDialog.setTitle("提示");
+
+                // 设置ProgressDialog 提示信息
+                //m_pDialog.setMessage("正在处理中...");
+
+                // 设置ProgressDialog 标题图标
+                //  m_pDialog.setIcon(R.drawable.img1);
+
+                // 设置ProgressDialog 的进度条是否不明确
+                m_pDialog.setIndeterminate(false);
+
+                // 设置ProgressDialog 是否可以按退回按键取消
+                m_pDialog.setCancelable(true);
+
+                // 设置ProgressDialog 的一个Button
+            /*
+            m_pDialog.setButton("确定", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int i)
+                {
+                    //点击“确定按钮”取消对话框
+
+                }
+            });
+			*/
+                // 让ProgressDialog显示
+                m_pDialog.show();
+                Timer timer = new Timer();
+                class MyTask extends java.util.TimerTask{
+                    int num=0;
+                    public void run() {
+                        num++;
+                        System.out.println("  己花费   "+num+" S");
+                        if(num>=4)
+                        {
+                            m_pDialog.cancel();
+                        }
+                    }
+                }
+                timer.schedule(new MyTask(), 1, 1000); //在1毫秒后执行此任务,每次间隔1秒
+            }
+        });
+
+
+
+        Button custom2DialogBtn = findViewById(R.id.index_custom2Dialog);
+        custom2DialogBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context=IndexActivity.this;
+                CustomDialog cd = new CustomDialog(context);
+                cd.show();
+            }
+        });
+
+
+        Button selectDialogBtn = findViewById(R.id.index_selectDialog);
+        selectDialogBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View views = getLayoutInflater().inflate(R.layout.custom_select_dialog, null);
+                Dialog dialog = new Dialog(IndexActivity.this, R.style.transparentFrameWindowStyle);
+                dialog.setContentView(views, new LayoutParams(LayoutParams.FILL_PARENT,
+                        LayoutParams.WRAP_CONTENT));
+
+                Window window = dialog.getWindow();
+                // 设置显示动画
+                window.setWindowAnimations(R.style.main_menu_animstyle);
+                WindowManager.LayoutParams wl = window.getAttributes();
+                wl.x = 0;
+                wl.y = getWindowManager().getDefaultDisplay().getHeight();
+                // 以下这两句是为了保证按钮可以水平满屏
+                wl.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                wl.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+
+                // 设置显示位置
+                dialog.onWindowAttributesChanged(wl);
+                // 设置点击外围解散
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
+            }
+        });
+
+
+
+        Button imglbBtn = findViewById(R.id.index_imglb);
+        imglbBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, TuiJianActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        Button paizhaoBtn = findViewById(R.id.index_paizhao);
+        paizhaoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, PaiZhaoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

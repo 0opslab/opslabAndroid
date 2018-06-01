@@ -160,6 +160,55 @@
                 android:layout_height="wrap_content"
                 android:text="AsyncTask" />
 
+            <Button
+                android:id="@+id/index_modalDialog"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="模式对话框" />
+
+            <Button
+                android:id="@+id/index_customDialog"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="自己定义对话框" />
+
+
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/index_custom2Dialog"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="自己定义对话框22" />
+
+        <Button
+            android:id="@+id/index_selectDialog"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="自定义对话框" />
+
+        <Button
+            android:id="@+id/index_imglb"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="图片轮播" />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/index_paizhao"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="拍照图片选取" />
 
 
         </LinearLayout>
