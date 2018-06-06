@@ -210,7 +210,16 @@
                 android:layout_height="wrap_content"
                 android:text="拍照图片选取" />
 
-
+            <Button
+                android:id="@+id/index_phoneinfo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="手机信息" />
+            <Button
+                android:id="@+id/index_webviewjs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="webviewjs" />
         </LinearLayout>
     </LinearLayout>
 

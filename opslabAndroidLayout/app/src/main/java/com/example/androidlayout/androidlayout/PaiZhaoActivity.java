@@ -1,28 +1,22 @@
 package com.example.androidlayout.androidlayout;
 
 import android.Manifest;
-import android.content.CursorLoader;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import java.io.File;
-import java.io.IOException;
-
 import android.content.Intent;
-import android.database.Cursor;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +24,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.androidlayout.androidlayout.util.FileUtil;
+
+import java.io.File;
+import java.io.IOException;
 
 public class PaiZhaoActivity extends AppCompatActivity {
 
@@ -148,6 +145,7 @@ public class PaiZhaoActivity extends AppCompatActivity {
                 setImageView(picFileFullName);
             } else if (resultCode == RESULT_CANCELED) {
                 // 用户取消了图像捕获
+                Log.e(tag, "用户取消了图像捕获");
             } else {
                 // 图像捕获失败，提示用户
                 Log.e(tag, "拍照失败");
@@ -192,7 +190,7 @@ public class PaiZhaoActivity extends AppCompatActivity {
      * http://www.eoeandroid.com/thread-196978-1-1.html
      *
      * @param path 照片路径
-     * @return角度
+     * @return 角度
      */
     public static int readPictureDegree(String path) {
         int degree  = 0;

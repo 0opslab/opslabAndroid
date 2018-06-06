@@ -423,6 +423,24 @@ public class IndexActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button phoneinfoBtn = findViewById(R.id.index_phoneinfo);
+        phoneinfoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, PhoneInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button webviewjsBtn = findViewById(R.id.index_webviewjs);
+        webviewjsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IndexActivity.this, WebViewJSActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
